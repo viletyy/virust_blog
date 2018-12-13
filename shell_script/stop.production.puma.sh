@@ -1,0 +1,1 @@
+bundle exec pumactl --state tmp/sockets/production.puma.state stop
