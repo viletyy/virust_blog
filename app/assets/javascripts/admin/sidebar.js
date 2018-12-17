@@ -1,0 +1,1 @@
+try{ace.settings.loadState('sidebar')}catch(e){}

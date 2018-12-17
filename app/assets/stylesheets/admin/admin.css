@@ -10,12 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap.min.css
+ *= require bootstrap.min
  *= require font-awesome.min.css
  *= require fonts.googleapis.com.css
  *= require ace.min.css
+ *= require ace-part2.min.css
  *= require ace-skins.min.css
  *= require ace-rtl.min.css
+ *= require ace-ie.min.css
  *= require_tree .
  *= require_self
  */
