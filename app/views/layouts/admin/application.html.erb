@@ -13,14 +13,14 @@
   </head>
 
   <body class="no-skin">
-    <%= render "layout_shares/admin_navbar" %>
+    <%= render "layout_shares/admin/navbar" %>
 
     <div class="main-container ace-save-state" id="main-container">
       <%= javascript_include_tag 'admin/main_container', 'data-turbolinks-track': 'reload' %>
       <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
         <%= javascript_include_tag 'admin/sidebar', 'data-turbolinks-track': 'reload' %>
-        <%= render "layout_shares/admin_sidebar_shortcuts" %>
-        <%= render "layout_shares/admin_nav_list" %>
+        <%= render "layout_shares/admin/sidebar_shortcuts" %>
+        <%= render "layout_shares/admin/nav_list" %>
       </div>
       <div class="main-content">
         <div class="main-content-inner">
@@ -28,7 +28,7 @@
         </div>
 
       </div>
-      <%= render "layout_shares/admin_footer" %>
+      <%= render "layout_shares/admin/footer" %>
     </div>
 
 
