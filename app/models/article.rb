@@ -17,6 +17,8 @@
 #
 
 class Article < ApplicationRecord
+  # default
+  default_scope { where.not(status: -1) }
 
   # ORM关系
   belongs_to :user

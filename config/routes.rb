@@ -10,6 +10,49 @@ Rails.application.routes.draw do
     resources :templates, only: [:index] do
 
     end
+
+    # 文章管理
+    namespace :articles_manage do
+      resources :articles do
+
+      end
+
+      resources :tags do
+
+      end
+
+      resources :categories do
+
+      end
+
+      resources :comments do
+
+      end
+
+      resources :view_records do
+
+      end
+
+      resources :like_records do
+
+      end
+    end
+
+    # 用户管理
+    namespace :users_manage do
+      resources :users do
+
+      end
+
+      resources :roles do
+
+      end
+
+      resources :messages do
+
+      end
+    end
+
   end
 
 end
