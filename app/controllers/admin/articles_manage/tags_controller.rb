@@ -49,6 +49,8 @@ class Admin::ArticlesManage::TagsController < Admin::BaseController
     end
   end
 
+  private
+
   def find_one
     @tag = Tags::Article.find_by_id(params[:id])
   end

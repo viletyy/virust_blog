@@ -49,6 +49,8 @@ class Admin::ArticlesManage::ViewRecordsController < Admin::BaseController
     end
   end
 
+  private
+
   def find_one
     @view_record = ViewRecords::Article.find_by_id(params[:id])
   end

@@ -49,6 +49,8 @@ class Admin::UsersManage::UsersController < Admin::BaseController
     end
   end
 
+  private
+
   def find_one
     @user = User.find_by_id(params[:id])
   end

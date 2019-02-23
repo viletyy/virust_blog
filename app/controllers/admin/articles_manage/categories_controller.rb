@@ -49,6 +49,8 @@ class Admin::ArticlesManage::CategoriesController < Admin::BaseController
     end
   end
 
+  private
+
   def find_one
     @category = Category.find_by_id(params[:id])
   end

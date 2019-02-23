@@ -49,6 +49,7 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
     end
   end
 
+  private
   def find_one
     @article = Article.find_by_id(params[:id])
   end

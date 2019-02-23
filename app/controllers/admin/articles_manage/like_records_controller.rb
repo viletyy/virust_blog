@@ -49,6 +49,7 @@ class Admin::ArticlesManage::LikeRecordsController < Admin::BaseController
     end
   end
 
+  private
   def find_one
     @like_record = LikeRecords::Article.find_by_id(params[:id])
   end

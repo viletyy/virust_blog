@@ -49,6 +49,8 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
     end
   end
 
+  private
+
   def find_one
     @comment = Comments::Article.find_by_id(params[:id])
   end
