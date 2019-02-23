@@ -50,8 +50,8 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="<%= is_active_action("admin/articles", "new") %>">
-        <a href="profile.html">
+      <li class="<%= is_active_action("admin/articles_manage/articles", "new") %>">
+        <a href="/admin/articles_manage/articles/new">
           <i class="menu-icon fa fa-caret-right"></i>
           写文章
         </a>
@@ -59,8 +59,8 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<%= is_active_action("admin/articles", "index") %>">
-        <a href="profile.html">
+      <li class="<%= is_active_action("admin/articles_manage/articles", "index") %>">
+        <a href="/admin/articles_manage/articles">
           <i class="menu-icon fa fa-caret-right"></i>
           文章列表
         </a>
@@ -68,8 +68,18 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<%= is_active_action("admin/tags", "new") %>">
-        <a href="inbox.html">
+      <li class="<%= is_active_action("admin/articles_manage/categories", "index") %>">
+        <a href="/admin/articles_manage/categories">
+          <i class="menu-icon fa fa-caret-right"></i>
+          分类列表
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+
+      <li class="<%= is_active_action("admin/articles_manage/tags", "index") %>">
+        <a href="/admin/articles_manage/tags">
           <i class="menu-icon fa fa-caret-right"></i>
           标签列表
         </a>
@@ -77,8 +87,8 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<%= is_active_action("admin/comments", "new") %>">
-        <a href="pricing.html">
+      <li class="<%= is_active_action("admin/articles_manage/comments", "index") %>">
+        <a href="/admin/articles_manage/comments">
           <i class="menu-icon fa fa-caret-right"></i>
           评论列表
         </a>
@@ -86,8 +96,8 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<%= is_active_action("admin/view_records", "new") %>">
-        <a href="timeline.html">
+      <li class="<%= is_active_action("admin/articles_manage/view_records", "index") %>">
+        <a href="/admin/articles_manage/view_records">
           <i class="menu-icon fa fa-caret-right"></i>
           访问记录
         </a>
@@ -109,7 +119,7 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="<%= is_active_action("admin/users", "index") %>">
+      <li class="<%= is_active_action("admin/users_manage/users", "index") %>">
         <a href="profile.html">
           <i class="menu-icon fa fa-caret-right"></i>
           用户列表

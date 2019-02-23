@@ -18,6 +18,7 @@ module VirusBlog
     config.time_zone = 'Beijing'
     config.encoding = 'utf-8'
     config.i18n.default_locale = "zh-CN"
+    config.i18n.fallbacks = [I18n.default_locale]
 
     config.active_record.default_timezone = :local
     config.autoload_paths += %W(#{config.root}/lib)

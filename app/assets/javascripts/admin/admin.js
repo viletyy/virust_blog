@@ -20,6 +20,13 @@
 //= require jquery.flot.min.js
 //= require jquery.flot.pie.min.js
 //= require jquery.flot.resize.min.js
+//= require jquery.dataTables.min.js
+//= require jquery.dataTables.bootstrap.min.js
+//= require dataTables.buttons.min.js
+//= require buttons.flash.min.js
+//= require buttons.html5.min.js
+//= require buttons.print.min.js
+//= require buttons.colVis.min.js
+//= require dataTables.select.min.js
 //= require ace-elements.min.js
 //= require ace.min.js
-//= require admin/custom

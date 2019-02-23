@@ -59,3 +59,5 @@ production:
   database: <%= ENV["database"] %>
   username: <%= ENV["username"] %>
   password: <%= ENV['password'] %>
+
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>

@@ -1,2 +1,2 @@
-class Admin::UsersManage::MessagesController < ApplicationController
+class Admin::UsersManage::MessagesController < Admin::BaseController
 end

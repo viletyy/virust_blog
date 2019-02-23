@@ -1,4 +1,4 @@
-class Admin::UsersManage::UsersController < ApplicationController
+class Admin::UsersManage::UsersController < Admin::BaseController
   before_action :find_one, only: [:edit, :update, :destroy]
 
   def index

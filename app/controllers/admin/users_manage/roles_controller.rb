@@ -1,2 +1,2 @@
-class Admin::UsersManage::RolesController < ApplicationController
+class Admin::UsersManage::RolesController < Admin::BaseController
 end

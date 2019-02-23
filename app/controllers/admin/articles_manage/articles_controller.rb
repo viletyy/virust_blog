@@ -1,4 +1,4 @@
-class Admin::ArticlesManage::ArticlesController < ApplicationController
+class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   before_action :find_one, only: [:edit, :update, :destroy]
 
   def index

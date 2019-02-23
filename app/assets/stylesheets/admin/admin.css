@@ -18,6 +18,8 @@
  *= require ace-skins.min.css
  *= require ace-rtl.min.css
  *= require ace-ie.min.css
+ *= require editor-md.css
+ *= require editormd.css
  *= require_tree .
  *= require_self
  */

@@ -1,4 +1,4 @@
-class Admin::ArticlesManage::LikeRecordsController < ApplicationController
+class Admin::ArticlesManage::LikeRecordsController < Admin::BaseController
   before_action :find_one, only: [:edit, :update, :destroy]
 
   def index
