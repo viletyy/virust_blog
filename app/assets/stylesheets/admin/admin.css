@@ -12,6 +12,13 @@
  *
  *= require bootstrap.min
  *= require font-awesome.min.css
+ *= require jquery-ui.custom.min.css
+ *= require chosen.min.css
+ *= require bootstrap-datepicker3.min.css
+ *= require bootstrap-timepicker.min.css
+ *= require daterangepicker.min.css
+ *= require bootstrap-datetimepicker.min.css
+ *= require bootstrap-colorpicker.min.css
  *= require fonts.googleapis.com.css
  *= require ace.min.css
  *= require ace-part2.min.css

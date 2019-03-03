@@ -28,4 +28,3 @@
 .idea/*
 
 config/application.yml
-Gemfile.lock

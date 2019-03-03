@@ -1,5 +1,6 @@
 class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   before_action :find_one, only: [:edit, :update, :destroy]
+  before_action :find_categories,only: [:new,:create,:edit,:update]
 
   def index
     if params[:keyword].present?
@@ -11,12 +12,13 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   end
 
   def new
-
+    @article = Article.new
   end
 
   def create
     @article = Article.new(article_params)
     if @article.save
+      @article.user = @current_user
       redirect_to admin_articles_manage_articles_path
       flash[:success] = "新增文章成功"
     else
@@ -52,6 +54,10 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   private
   def find_one
     @article = Article.find_by_id(params[:id])
+  end
+
+  def find_categories
+    @categories = Categories::Article.limit(50)
   end
 
   def article_params

@@ -11,7 +11,7 @@ class Admin::ArticlesManage::TagsController < Admin::BaseController
   end
 
   def new
-
+    @tag = Tags::Article.new
   end
 
   def create
@@ -56,6 +56,6 @@ class Admin::ArticlesManage::TagsController < Admin::BaseController
   end
 
   def tag_params
-    params.require(:tag).permit!
+    params.require(:tags_article).permit!
   end
 end

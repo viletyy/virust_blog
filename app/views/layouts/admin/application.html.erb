@@ -34,8 +34,10 @@
 
     <%= javascript_include_tag 'admin/admin', 'data-turbolinks-track': 'reload' %>
 
-    <% content_for :extro_scripts do %>
 
+    <% content_for :extro_scripts do %>
+      <%#= javascript_include_tag "admin/form" %>
+      <%#= javascript_include_tag 'admin/custom', 'data-turbolinks-track': 'reload' %>
     <% end %>
 
     <%= content_for?(:extro_scripts) ? yield(:extro_scripts) : '' %>
