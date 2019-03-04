@@ -1,0 +1,93 @@
+<%= render("admin/articles_manage/shares/header_breadcrumb") %>
+
+<div class="page-content">
+    <%= render("layout_shares/admin/setting_container") %>
+  <!-- /.ace-settings-container -->
+
+  <div class="page-header">
+    <h1>
+      文章管理
+      <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        标签列表
+      </small>
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+      <%= render("layout_shares/admin/alert") %>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="<%= new_admin_articles_manage_tag_path %>" class="btn btn-app btn-primary btn-xs radius-4">
+            <i class="ace-icon fa fa-plus bigger-170"></i>
+            创建标签
+          </a>
+          <div class="space"></div>
+          <table id="simple-table" class="table  table-bordered table-hover">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>名称</th>
+              <th>创建时间</th>
+              <th>是否展示</th>
+              <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @tags.each do |tag| %>
+              <tr>
+
+                <td class="center">
+                  <%= tag.id %>
+                </td>
+
+                <td>
+                  <a href="#"><%= tag.try(:name) %></a>
+                </td>
+                <td><%= tag.created_at %></td>
+
+                <td><%= tag.status == 1 ? "是" : "否" %></td>
+
+                <td>
+                  <div class="hidden-sm hidden-xs btn-group">
+<!--                    <button class="btn btn-xs btn-success">-->
+<!--                      <i class="ace-icon fa fa-check bigger-120"></i>-->
+<!--                    </button>-->
+
+                    <%= link_to edit_admin_articles_manage_tag_path(tag) do %>
+                      <button class="btn btn-xs btn-info">
+                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                      </button>
+                    <% end %>
+
+                    <%#= link_to admin_articles_manage_article_path(article),method: :delete do %>
+                      <button class="btn btn-xs btn-danger bootbox-confirm-delete" data-href="<%= admin_articles_manage_category_path(tag) %>">
+                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                      </button>
+                    <%# end %>
+
+<!--                    <button class="btn btn-xs btn-warning">-->
+<!--                      <i class="ace-icon fa fa-flag bigger-120"></i>-->
+<!--                    </button>-->
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div><!-- /.span -->
+      </div><!-- /.row -->
+
+
+      <%= render partial: "kaminari/page_style", locals: { begin_count: @begin_count, current_page: @tags , theme: "admin" }%>
+
+      <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<%= render("admin/shares/table_js") %>

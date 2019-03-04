@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def is_active_action(controller_name,action)
-    params[:controller] == controller_name && params[:action] == action ? "active" : nil
+    params[:controller] == controller_name && action.include?(params[:action]) ? "active" : nil
   end
 
   def format_time_yymmdd(time)

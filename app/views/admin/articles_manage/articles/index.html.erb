@@ -30,6 +30,7 @@
           <table id="simple-table" class="table  table-bordered table-hover">
             <thead>
             <tr>
+              <th>#</th>
               <th class="detail-col">查看用户</th>
               <th>标题</th>
               <th>副标题</th>
@@ -48,6 +49,9 @@
             <tbody>
             <% @articles.each do |article| %>
               <tr>
+                <td class="center">
+                  <%= article.id %>
+                </td>
 
                 <td class="center">
                   <div class="action-buttons">

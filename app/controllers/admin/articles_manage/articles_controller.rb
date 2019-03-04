@@ -65,7 +65,7 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   def bind_tags
     if !article_params[:tags].blank?
       tag_ids = []
-      article_params[:tags].split(", ").each do |tn|
+      article_params[:tags].split(",").each do |tn|
         tag = Tags::MarkArticle.find_or_create_by(name:tn)
         tag_ids << tag
       end

@@ -9,7 +9,7 @@
       分类列表
       <small>
         <i class="ace-icon fa fa-angle-double-right"></i>
-        新增分类
+        编辑分类
       </small>
     </h1>
   </div><!-- /.page-header -->
@@ -17,9 +17,9 @@
   <div class="row">
     <div class="col-xs-12">
       <!-- PAGE CONTENT BEGINS -->
-      <%= form_for @tag, url: admin_articles_manage_tags_path, html:{class: "form-horizontal"} do |f| %>
+      <%= form_for @category, url: admin_articles_manage_category_path(@category), html:{class: "form-horizontal"} do |f| %>
 
-        <%= render partial: "admin/form_shares/f_text_field", locals: {f:f,field: "name", placeholder: "请输入标签名称",required:true} %>
+        <%= render partial: "admin/form_shares/f_text_field", locals: {f:f,field: "name", placeholder: "请输入分类名称",required:true} %>
 
         <%= render partial: "admin/form_shares/f_on_or_off_switches", locals: {f:f,field:"status"} %>
 
