@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :like_records
   has_many :view_records
 
+  # scope
+
   attr_accessor :signin
 
   def self.find_for_database_authentication(warden_conditions)
@@ -37,5 +39,9 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username)|| conditions.has_key?(:phone) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def have_admin_role?
+    return false
   end
 end

@@ -43,3 +43,4 @@
 //= require dataTables.select.min.js
 //= require ace-elements.min.js
 //= require ace.min.js
+//= require editormd.min.js

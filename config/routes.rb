@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root "home#index"
     resources :templates, only: [:index] do
-
+      collection do
+        get :editor
+      end
     end
 
     # 文章管理

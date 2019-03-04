@@ -42,7 +42,7 @@
             <a href="#"><%= article.try(:title) %></a>
           </td>
           <td><%= article.try(:desp) %></td>
-          <td><%= article.try(:content) %></td>
+          <td><%= truncate(article.try(:content)) %></td>
           <td><%= format_time_yymmddhms(article.created_at) %></td>
           <td class="hidden-480"><%= article.try(:comments_counter) %></td>
           <td class="hidden-480"><%= article.try(:liked_counter) %></td>
