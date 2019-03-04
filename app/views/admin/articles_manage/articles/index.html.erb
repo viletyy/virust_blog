@@ -19,151 +19,15 @@
       <!-- PAGE CONTENT BEGINS -->
       <%= render("layout_shares/admin/alert") %>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <a href="<%= new_admin_articles_manage_article_path %>" class="btn btn-app btn-primary btn-xs radius-4">
-            <i class="ace-icon fa fa-pencil-square-o bigger-160"></i>
-            写文章
-<!--            <span class="badge badge-warning badge-left">11</span>-->
-          </a>
-          <div class="space"></div>
-          <table id="simple-table" class="table table-bordered table-hover">
-            <thead>
-            <tr>
-              <th>#</th>
-              <th class="detail-col">用户</th>
-              <th>标题</th>
-              <th>副标题</th>
-              <th>内容</th>
-              <th>
-                <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                发布时间
-              </th>
-              <th class="hidden-480">分类</th>
-              <th class="hidden-480">标签</th>
-              <th>是否展示</th>
-              <th></th>
-            </tr>
-            </thead>
+      <a href="<%= new_admin_articles_manage_article_path %>" class="btn btn-app btn-primary btn-xs radius-4">
+        <i class="ace-icon fa fa-pencil-square-o bigger-160"></i>
+        写文章
+        <!--            <span class="badge badge-warning badge-left">11</span>-->
+      </a>
+      <div class="space"></div>
 
-            <tbody>
-            <% @articles.each do |article| %>
-              <tr>
-                <td class="center">
-                  <%= article.id %>
-                </td>
+      <%= render partial: "table", locals: {articles:@articles,begin_count:@begin_count} %>
 
-                <td class="center">
-                  <div class="action-buttons">
-                    <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
-                      <i class="ace-icon fa fa-angle-double-down"></i>
-                      <span class="sr-only">Details</span>
-                    </a>
-                  </div>
-                </td>
-
-                <td>
-                  <a href="#"><%= article.try(:title) %></a>
-                </td>
-                <td><%= article.try(:desp) %></td>
-                <td><%= article.try(:content) %></td>
-                <td><%= format_time_yymmddhms(article.created_at) %></td>
-                <td class="hidden-480"><%= article.category.try(:name) if article.category.present? %></td>
-
-                <td class="hidden-480">
-                  <% article.tags.each do |tag| %>
-                    <span class="label label-sm label-warning"><%= tag.try(:name) %></span>
-                  <% end %>
-                </td>
-
-                <td><%= article.status == 1 ? "是" : "否" %></td>
-
-                <td>
-                  <div class="hidden-sm hidden-xs btn-group">
-<!--                    <button class="btn btn-xs btn-success">-->
-<!--                      <i class="ace-icon fa fa-check bigger-120"></i>-->
-<!--                    </button>-->
-
-                    <%= link_to edit_admin_articles_manage_article_path(article) do %>
-                      <button class="btn btn-xs btn-info">
-                        <i class="ace-icon fa fa-pencil bigger-120"></i>
-                      </button>
-                    <% end %>
-
-                    <%#= link_to admin_articles_manage_article_path(article),method: :delete do %>
-                      <button class="btn btn-xs btn-danger bootbox-confirm-delete" data-href="<%= admin_articles_manage_article_path(article) %>">
-                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                      </button>
-                    <%# end %>
-
-<!--                    <button class="btn btn-xs btn-warning">-->
-<!--                      <i class="ace-icon fa fa-flag bigger-120"></i>-->
-<!--                    </button>-->
-                  </div>
-                </td>
-              </tr>
-              <tr class="detail-row">
-                <td colspan="8">
-                  <div class="table-detail">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12">
-                        <div class="space visible-xs"></div>
-
-                        <div class="profile-user-info profile-user-info-striped">
-                          <div class="profile-info-row">
-                            <div class="profile-info-name"> Username </div>
-
-                            <div class="profile-info-value">
-                              <span><%= article.user.try(:username) if article.user.present? %></span>
-                            </div>
-                          </div>
-
-                          <div class="profile-info-row">
-                            <div class="profile-info-name"> Nickname </div>
-
-                            <div class="profile-info-value">
-                              <span><%= article.user.try(:nickname) if article.user.present? %></span>
-                            </div>
-                          </div>
-
-                          <div class="profile-info-row">
-                            <div class="profile-info-name"> Phone </div>
-
-                            <div class="profile-info-value">
-                              <i class="fa fa-map-marker light-orange bigger-110"></i>
-                              <span><%= article.user.try(:phone) if article.user.present? %></span>
-                            </div>
-                          </div>
-
-                          <div class="profile-info-row">
-                            <div class="profile-info-name"> Gender </div>
-
-                            <div class="profile-info-value">
-                              <span><%= article.user.present? && article.user.gender == 1 ? "男" : "女" %></span>
-                            </div>
-                          </div>
-
-                          <div class="profile-info-row">
-                            <div class="profile-info-name"> Joined </div>
-
-                            <div class="profile-info-value">
-                              <span><%= format_time_yymmddhms(article.user.created_at) if article.user.present? %></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-        </div><!-- /.span -->
-      </div><!-- /.row -->
-
-
-      <%= render partial: "kaminari/page_style", locals: { begin_count: @begin_count, current_page: @articles , theme: "admin" }%>
 
       <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->

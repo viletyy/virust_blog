@@ -7,7 +7,7 @@
 #  user_id          :integer
 #  title            :string(255)
 #  desp             :string(255)
-#  content          :text(65535)
+#  content          :text(4294967295)
 #  liked_counter    :integer          default(0)
 #  viewed_counter   :integer          default(0)
 #  comments_counter :integer          default(0)

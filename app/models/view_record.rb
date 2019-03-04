@@ -14,5 +14,7 @@
 #
 
 class ViewRecord < ApplicationRecord
-  belongs_to :subject, polymorphic: true, counter_cache: :liked_counter
+  default_scope { where.not(status: -1) }
+
+  belongs_to :subject, polymorphic: true
 end

@@ -11,5 +11,7 @@
 #
 
 class Tag < ApplicationRecord
+  default_scope { where.not(status: -1) }
+
   has_many :subject_tags
 end

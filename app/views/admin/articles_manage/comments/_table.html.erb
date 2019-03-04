@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="space"></div>
+    <table id="simple-table" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th class="detail-col">用户</th>
+        <th>所属文章</th>
+        <th>内容</th>
+        <th>点赞人数</th>
+        <th>阅读人数</th>
+        <th>
+          <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+          评论时间
+        </th>
+        <th>是否展示</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% comments.each do |comment| %>
+        <tr>
+          <td class="center">
+            <%= comment.id %>
+          </td>
+
+          <td class="center">
+            <div class="action-buttons">
+              <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                <i class="ace-icon fa fa-angle-double-down"></i>
+                <span class="sr-only">Details</span>
+              </a>
+            </div>
+          </td>
+
+          <td>
+            <a href="#"><%= comment.article.try(:title) %></a>
+          </td>
+          <td>
+            <a href="#"><%= comment.try(:content) %></a>
+          </td>
+          <td><%= comment.try(:liked_counter) %></td>
+          <td><%= comment.try(:viewed_counter) %></td>
+          <td><%= format_time_yymmddhms(comment.created_at) %></td>
+          <td><%= comment.status == 1 ? "是" : "否" %></td>
+
+          <td>
+            <div class="hidden-sm hidden-xs btn-group">
+              <!--                    <button class="btn btn-xs btn-success">-->
+              <!--                      <i class="ace-icon fa fa-check bigger-120"></i>-->
+              <!--                    </button>-->
+
+              <%#= link_to edit_admin_articles_manage_article_path(article) do %>
+              <!--                      <button class="btn btn-xs btn-info">-->
+              <!--                        <i class="ace-icon fa fa-pencil bigger-120"></i>-->
+              <!--                      </button>-->
+              <%# end %>
+
+              <%#= link_to admin_articles_manage_article_path(article),method: :delete do %>
+              <button class="btn btn-xs btn-danger bootbox-confirm-delete" data-href="<%= admin_articles_manage_article_path(comment) %>">
+                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+              </button>
+              <%# end %>
+
+              <!--                    <button class="btn btn-xs btn-warning">-->
+              <!--                      <i class="ace-icon fa fa-flag bigger-120"></i>-->
+              <!--                    </button>-->
+            </div>
+          </td>
+        </tr>
+        <%= render partial: "admin/articles_manage/shares/detail_user", locals: {obj:comment} %>
+
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.span -->
+</div><!-- /.row -->
+
+
+<%= render partial: "kaminari/page_style", locals: { begin_count: begin_count, current_page: comments , theme: "admin" }%>

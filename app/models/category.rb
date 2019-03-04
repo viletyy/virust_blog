@@ -11,4 +11,6 @@
 #
 
 class Category < ApplicationRecord
+  default_scope { where.not(status: -1) }
+
 end

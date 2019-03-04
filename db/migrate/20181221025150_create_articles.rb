@@ -5,7 +5,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.string :title
       t.string :desp
-      t.text :content
+      t.text :content, limit: 4294967295
       t.integer :liked_counter, default: 0
       t.integer :viewed_counter, default: 0
       t.integer :comments_counter, default: 0

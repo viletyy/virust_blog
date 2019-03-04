@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "user_id"
     t.string "title"
     t.string "desp"
-    t.text "content"
+    t.text "content", limit: 4294967295
     t.integer "liked_counter", default: 0
     t.integer "viewed_counter", default: 0
     t.integer "comments_counter", default: 0
@@ -37,11 +37,9 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
     t.integer "user_id"
-    t.text "content"
+    t.string "content"
     t.string "subject_type"
     t.string "subject_id"
-    t.integer "liked_counter", default: 0
-    t.integer "viewed_counter", default: 0
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

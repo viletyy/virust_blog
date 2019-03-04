@@ -14,4 +14,5 @@
 #
 
 class LikeRecords::MarkArticle < LikeRecord
+  belongs_to :article, class_name: "Article", counter_cache: :liked_counter
 end

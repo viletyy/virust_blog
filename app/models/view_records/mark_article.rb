@@ -14,4 +14,7 @@
 #
 
 class ViewRecords::MarkArticle < ViewRecord
+
+  belongs_to :article, class_name: "Article", counter_cache: :viewed_counter
+
 end
