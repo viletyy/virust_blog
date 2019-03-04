@@ -27,11 +27,11 @@
 <!--            <span class="badge badge-warning badge-left">11</span>-->
           </a>
           <div class="space"></div>
-          <table id="simple-table" class="table  table-bordered table-hover">
+          <table id="simple-table" class="table table-bordered table-hover">
             <thead>
             <tr>
               <th>#</th>
-              <th class="detail-col">查看用户</th>
+              <th class="detail-col">用户</th>
               <th>标题</th>
               <th>副标题</th>
               <th>内容</th>
@@ -67,7 +67,7 @@
                 </td>
                 <td><%= article.try(:desp) %></td>
                 <td><%= article.try(:content) %></td>
-                <td><%= article.created_at %></td>
+                <td><%= format_time_yymmddhms(article.created_at) %></td>
                 <td class="hidden-480"><%= article.category.try(:name) if article.category.present? %></td>
 
                 <td class="hidden-480">
@@ -147,7 +147,7 @@
                             <div class="profile-info-name"> Joined </div>
 
                             <div class="profile-info-value">
-                              <span><%= article.user.created_at if article.user.present? %></span>
+                              <span><%= format_time_yymmddhms(article.user.created_at) if article.user.present? %></span>
                             </div>
                           </div>
                         </div>

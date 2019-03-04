@@ -28,4 +28,16 @@ module ApplicationHelper
     time.strftime("%Y-%m-%d %H:%M") if time.present?
   end
 
+  def action_with_ine
+    ["index","edit","new"]
+  end
+
+  def action_with_in
+    ["index","edit"]
+  end
+
+  def action_with_n
+    ["new"]
+  end
+
 end

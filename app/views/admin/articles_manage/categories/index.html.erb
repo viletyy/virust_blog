@@ -48,7 +48,7 @@
                 <td>
                   <a href="#"><%= category.try(:name) %></a>
                 </td>
-                <td><%= category.created_at %></td>
+                <td><%= format_time_yymmddhms(category.created_at) %></td>
 
                 <td><%= category.status == 1 ? "是" : "否" %></td>
 
