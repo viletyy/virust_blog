@@ -79,3 +79,6 @@ gem 'carrierwave'
 
 # 自动化部署工具
 # gem 'mina', '~> 1.2', '>= 1.2.3'
+
+# 权限控制
+gem 'pundit'

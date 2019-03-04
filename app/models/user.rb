@@ -42,6 +42,6 @@ class User < ApplicationRecord
   end
 
   def have_admin_role?
-    return false
+    return true
   end
 end
