@@ -13,5 +13,5 @@
 #  updated_at   :datetime         not null
 #
 
-class LikeRecords::Article < LikeRecord
+class LikeRecords::MarkArticle < LikeRecord
 end

@@ -10,5 +10,8 @@
 #  updated_at :datetime         not null
 #
 
-class Tags::Article < Tag
+class Tags::MarkArticle < Tag
+
+  has_many :articles, through: :subject_tags, source: :subject, source_type: "Article"
+
 end

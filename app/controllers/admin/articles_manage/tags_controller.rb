@@ -3,19 +3,19 @@ class Admin::ArticlesManage::TagsController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @tags = Tags::Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @tags = Tags::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @tags =  Tags::Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @tags =  Tags::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@tags.current_page - 1)*LIST_PAGE + 1
   end
 
   def new
-    @tag = Tags::Article.new
+    @tag = Tags::MarkArticle.new
   end
 
   def create
-    @tag = Tags::Article.new(tag_params)
+    @tag = Tags::MarkArticle.new(tag_params)
     if @tag.save
       redirect_to admin_articles_manage_tags_path
       flash[:success] = "新增标签成功"
@@ -52,10 +52,10 @@ class Admin::ArticlesManage::TagsController < Admin::BaseController
   private
 
   def find_one
-    @tag = Tags::Article.find_by_id(params[:id])
+    @tag = Tags::MarkArticle.find_by_id(params[:id])
   end
 
   def tag_params
-    params.require(:tags_article).permit!
+    params.require(:tags_mark_article).permit!
   end
 end

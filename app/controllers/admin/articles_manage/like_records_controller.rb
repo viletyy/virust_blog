@@ -3,9 +3,9 @@ class Admin::ArticlesManage::LikeRecordsController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @like_records = LikeRecords::Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @like_records = LikeRecords::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @like_records =  LikeRecords::Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @like_records =  LikeRecords::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@like_records.current_page - 1)*LIST_PAGE + 1
   end
@@ -15,7 +15,7 @@ class Admin::ArticlesManage::LikeRecordsController < Admin::BaseController
   end
 
   def create
-    @like_record = LikeRecords::Article.new(like_record_params)
+    @like_record = LikeRecords::MarkArticle.new(like_record_params)
     if @like_record.save
       redirect_to admin_articles_manage_like_records_path
       flash[:success] = "新增点赞记录成功"
@@ -51,10 +51,10 @@ class Admin::ArticlesManage::LikeRecordsController < Admin::BaseController
 
   private
   def find_one
-    @like_record = LikeRecords::Article.find_by_id(params[:id])
+    @like_record = LikeRecords::MarkArticle.find_by_id(params[:id])
   end
 
   def like_record_params
-    params.require(:like_record).permit!
+    params.require(:like_record_mark_article).permit!
   end
 end

@@ -3,9 +3,9 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @comments = Comments::Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @comments = Comments::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @comments = Comments::Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @comments = Comments::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@comments.current_page - 1)*LIST_PAGE + 1
   end
@@ -15,7 +15,7 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
   end
 
   def create
-    @comment = Comments::Article.new(comment_params)
+    @comment = Comments::MarkArticle.new(comment_params)
     if @comment.save
       redirect_to admin_articles_manage_comments_path
       flash[:success] = "新增评论成功"
@@ -52,10 +52,10 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
   private
 
   def find_one
-    @comment = Comments::Article.find_by_id(params[:id])
+    @comment = Comments::MarkArticle.find_by_id(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit!
+    params.require(:comment_mark_article).permit!
   end
 end

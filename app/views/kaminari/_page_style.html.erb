@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="dataTables_info" id="dynamic-table_info" role="status" aria-live="polite">第<%=current_page.total_count == 0 ? 0 : begin_count %>-<%= begin_count + current_page.size - 1 %> 条记录/共<%= current_page.total_count%>条</div>
+  </div>
+  <div class="col-xs-6">
+    <div class="dataTables_paginate paging_simple_numbers" id="dynamic-table_paginate">
+      <%= paginate current_page, :theme => theme %>
+    </div>
+  </div>
+</div>

@@ -3,19 +3,19 @@ class Admin::ArticlesManage::CategoriesController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @categories = Categories::Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @categories = Categories::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @categories = Categories::Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @categories = Categories::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@categories.current_page - 1)*LIST_PAGE + 1
   end
 
   def new
-    @category = Categories::Article.new
+    @category = Categories::MarkArticle.new
   end
 
   def create
-    @category = Categories::Article.new(category_params)
+    @category = Categories::MarkArticle.new(category_params)
     if @category.save
       redirect_to admin_articles_manage_categories_path
       flash[:success] = "新增分类成功"
@@ -52,10 +52,10 @@ class Admin::ArticlesManage::CategoriesController < Admin::BaseController
   private
 
   def find_one
-    @category = Categories::Article.find_by_id(params[:id])
+    @category = Categories::MarkArticle.find_by_id(params[:id])
   end
 
   def category_params
-    params.require(:categories_article).permit!
+    params.require(:categories_mark_article).permit!
   end
 end

@@ -3,9 +3,9 @@ class Admin::ArticlesManage::ViewRecordsController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @view_records = ViewRecords::Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @view_records = ViewRecords::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @view_records =  ViewRecords::Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @view_records =  ViewRecords::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@view_records.current_page - 1)*LIST_PAGE + 1
   end
@@ -15,7 +15,7 @@ class Admin::ArticlesManage::ViewRecordsController < Admin::BaseController
   end
 
   def create
-    @view_record = ViewRecords::Article.new(view_record_params)
+    @view_record = ViewRecords::MarkArticle.new(view_record_params)
     if @view_record.save
       redirect_to admin_articles_manage_view_records_path
       flash[:success] = "新增访问记录成功"
@@ -52,10 +52,10 @@ class Admin::ArticlesManage::ViewRecordsController < Admin::BaseController
   private
 
   def find_one
-    @view_record = ViewRecords::Article.find_by_id(params[:id])
+    @view_record = ViewRecords::MarkArticle.find_by_id(params[:id])
   end
 
   def view_record_params
-    params.require(:view_record).permit!
+    params.require(:view_record_mark_article).permit!
   end
 end

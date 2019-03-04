@@ -13,5 +13,5 @@
 #  updated_at   :datetime         not null
 #
 
-class ViewRecords::Article < ViewRecord
+class ViewRecords::MarkArticle < ViewRecord
 end

@@ -4,7 +4,7 @@
 
   <div class="col-sm-9">
     <div class="input-group col-xs-10 col-sm-5">
-      <%= f.select field.to_sym, options_for_select(options),{include_blank:true},:class =>"chosen-select form-control","data-placeholder".to_sym => placeholder %>
+      <%= f.select field.to_sym, options_for_select(options, selected),{include_blank:true},:class =>"chosen-select form-control","data-placeholder".to_sym => placeholder, :required => required %>
     </div>
   </div>
 </div>

@@ -7,7 +7,7 @@
       文章管理
       <small>
         <i class="ace-icon fa fa-angle-double-right"></i>
-        写文章
+        编辑文章
       </small>
     </h1>
   </div><!-- /.page-header -->
@@ -16,9 +16,9 @@
     <div class="col-xs-12">
       <%= render("layout_shares/admin/alert") %>
       <!-- PAGE CONTENT BEGINS -->
-      <%= form_for @article, url: admin_articles_manage_articles_path, html:{class: "form-horizontal" } do |f| %>
+      <%= form_for @article, url: admin_articles_manage_article_path,method: :put, html:{class: "form-horizontal" } do |f| %>
 
-        <%= render partial: "admin/form_shares/f_chosen_select", locals: {f:f,field:"category_id",options: @categories.collect{|c|[c.name,c.id]},placeholder: "请选择分类", required:"true",selected: nil } %>
+        <%= render partial: "admin/form_shares/f_chosen_select", locals: {f:f,field:"category_id",options: @categories.collect{|c|[c.name,c.id]},placeholder: "请选择分类", required:"true", selected: @article.category_id } %>
 
         <%= render partial: "admin/form_shares/f_text_field", locals: {f:f,field: "title", placeholder: "请输入文章标题", required:"true"} %>
 
@@ -26,7 +26,7 @@
 
         <%= render partial: "admin/form_shares/f_textarea", locals: {f:f,field: "content",placeholder:"请输入文章内容"} %>
 
-        <%= render partial: "admin/form_shares/f_tag_field", locals: {f:f,field: "tags",value: [].join(","),placeholder: "请输入标签"} %>
+        <%= render partial: "admin/form_shares/f_tag_field", locals: {f:f,field: "tags",value: @article.tags.collect{|t|t.name}.join(","),placeholder: "请输入标签"} %>
 
         <%= render partial: "admin/form_shares/f_on_or_off_switches", locals: {f:f,field:"status"} %>
 

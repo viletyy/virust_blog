@@ -15,6 +15,7 @@
 //= require jquery-ui.custom.min.js
 //= require jquery.ui.touch-punch.min.js
 //= require chosen.jquery.min.js
+//= require bootbox.js
 //= require spinbox.min.js
 //= require bootstrap-datepicker.min.js
 //= require bootstrap-timepicker.min.js

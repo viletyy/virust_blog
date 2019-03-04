@@ -22,12 +22,17 @@ class Article < ApplicationRecord
 
   # ORM关系
   belongs_to :user
-  belongs_to :category, class_name: "Categories::Article", foreign_key: :category_id
+  belongs_to :category, class_name: "Categories::MarkArticle", foreign_key: :category_id
 
-  has_many :comments,class_name: "Comments::Article", as: :subject
-  has_many :like_records, class_name: "LikeRecords::Article", as: :subject
-  has_many :view_records, class_name: "ViewRecords::Article", as: :subject
+  has_many :comments, class_name: "Comments::MarkArticle", as: :subject
+  has_many :like_records, class_name: "LikeRecords::MarkArticle", as: :subject
+  has_many :view_records, class_name: "ViewRecords::MarkArticle", as: :subject
   has_many :subject_tags, as: :subject
-  has_many :tags, class_name: "Tags::Article",as: :subject,through: :subject_tags
+  has_many :tags, class_name: "Tags::MarkArticle", as: :subject, through: :subject_tags
+
+  # scope
+  scope :order_with_asc, -> (col){order("#{col} asc")}
+  scope :order_with_desc, -> (col){order("#{col} desc")}
+  scope :search, -> (keyword){where("title like ?", "%#{keyword}%")}
 
 end

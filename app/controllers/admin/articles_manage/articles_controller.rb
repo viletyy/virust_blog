@@ -4,9 +4,9 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
 
   def index
     if params[:keyword].present?
-      @articles = Article.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @articles = Article.includes(:tags,:user).search(params[:keyword]).order_with_desc("created_at").page(params[:page]).per(LIST_PAGE)
     else
-      @articles = Article.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @articles = Article.includes(:tags,:user).order_with_desc("created_at").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@articles.current_page - 1)*LIST_PAGE + 1
   end
@@ -16,14 +16,15 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = Article.new(article_params.except(:tags))
+    @article.tags = bind_tags
+    @article.user = @current_user
     if @article.save
-      @article.user = @current_user
       redirect_to admin_articles_manage_articles_path
       flash[:success] = "新增文章成功"
     else
-      render :new
       flash[:error] = @article.errors.full_messages.join(",")
+      render :new
     end
   end
 
@@ -32,13 +33,14 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   end
 
   def update
-    @article.attributes = article_params
+    @article.attributes = article_params.except(:tags)
+    @article.tags = bind_tags
     if @article.save
       redirect_to admin_articles_manage_articles_path
       flash[:success] = "更新文章成功"
     else
-      render :edit
       flash[:error] = @article.errors.full_messages.join(",")
+      render :edit
     end
   end
 
@@ -57,7 +59,21 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   end
 
   def find_categories
-    @categories = Categories::Article.limit(50)
+    @categories = Categories::MarkArticle.limit(50)
+  end
+
+  def bind_tags
+    if !article_params[:tags].blank?
+      tag_ids = []
+      article_params[:tags].split(", ").each do |tn|
+        tag = Tags::MarkArticle.find_or_create_by(name:tn)
+        tag_ids << tag
+      end
+      tags = Tags::MarkArticle.where(id:tag_ids)
+    else
+      tags = Tags::MarkArticle.where(id:"")
+    end
+    tags
   end
 
   def article_params

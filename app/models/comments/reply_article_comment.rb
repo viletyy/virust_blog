@@ -16,5 +16,5 @@
 #
 
 class Comments::ReplyArticleComment < Comment
-  belongs_to :comment, class_name: "Comments::Article", as: :reply_comments, foreign_key: :subject_id
+  belongs_to :comment, class_name: "MarkArticle", as: :reply_comments, foreign_key: :subject_id
 end

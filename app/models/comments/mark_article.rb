@@ -15,7 +15,7 @@
 #  updated_at     :datetime         not null
 #
 
-class Comments::Article < Comment
+class Comments::MarkArticle < Comment
   belongs_to :article, class_name: "Article", as: :comments, foreign_key: :subject_id, counter_cache: :comments_counter
   has_many :comments_reply_article_comments, :class_name => 'Comments::ReplyArticleComment', as: :subject, foreign_key: :subject_id
 end

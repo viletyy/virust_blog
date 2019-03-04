@@ -10,6 +10,6 @@
 #  updated_at :datetime         not null
 #
 
-class Categories::Article < Category
-  has_many :articles
+class Categories::MarkArticle < Category
+  has_many :articles, foreign_key: :category_id
 end
