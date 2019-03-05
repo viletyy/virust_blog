@@ -10,9 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap.min.css
- *= require font-awesome.min.css
- *= require fonts.googleapis.com.css
- *= require ace.min.css
- *= require ace-rtl.min.css
+ *= require admin/bootstrap.min.css
+ *= require admin/font-awesome.min.css
+ *= require admin/fonts.googleapis.com.css
+ *= require admin/ace.min.css
+ *= require admin/ace-rtl.min.css
  */

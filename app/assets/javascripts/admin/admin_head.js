@@ -13,4 +13,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require ace-extra.min.js
+//= require admin/ace-extra.min.js
