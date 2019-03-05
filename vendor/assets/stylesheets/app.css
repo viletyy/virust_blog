@@ -215,7 +215,8 @@ a:hover {
 .excerpt .time,
 .excerpt .category,
 .excerpt .comment,
-.excerpt .views {
+.excerpt .views,
+.excerpt .likes {
     cursor: pointer;
     margin-right: 20px;
 }
@@ -246,6 +247,14 @@ a:hover {
     color: #009a61;
 }
 
+.pagination .current {
+    float: left;
+    color: #ffffff;
+    background: #009a61;
+    width: 34px;
+    height: 34px;
+    padding: 7px 12px;
+}
 
 /* 右侧 */
 

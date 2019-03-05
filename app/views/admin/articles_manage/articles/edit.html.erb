@@ -24,7 +24,7 @@
 
         <%= render partial: "admin/form_shares/f_long_text_field", locals: {f:f,field: "desp", placeholder: "请输入文章副标题", required:""} %>
 
-        <%= render partial: "admin/form_shares/editor", locals: {model:"article",field: "content",value:@article.content} %>
+        <%= render partial: "admin/form_shares/editor", locals: {f:f,model:"article",field: "content",value:@article.content} %>
 
         <%= render partial: "admin/form_shares/f_tag_field", locals: {f:f,field: "tags",value: @article.tags.collect{|t|t.name}.join(","),placeholder: "请输入标签"} %>
 

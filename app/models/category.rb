@@ -13,4 +13,10 @@
 class Category < ApplicationRecord
   default_scope { where.not(status: -1) }
 
+
+  # scope
+  scope :order_with_asc, -> (col){order("#{col} asc")}
+  scope :order_with_desc, -> (col){order("#{col} desc")}
+  scope :search, -> (keyword){where("name like ?", "%#{keyword}%")}
+  scope :is_show_home, ->(){where(status:1)}
 end

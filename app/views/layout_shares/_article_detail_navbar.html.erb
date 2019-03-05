@@ -1,0 +1,29 @@
+<div class="sidebar ">
+  <div class="widget widget_hot">
+    <h3>文章目录</h3>
+    <ul>
+      <% @articles.each do |article| %>
+        <li><a title="" href="/article_detail/<%=article.id %>"><span class="text"><%= article.try(:title) %></span></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="widget widget_hot ">
+    <h3>最新文章</h3>
+    <ul>
+      <% @new_articles.each do |article| %>
+        <li>
+          <a title=" " href="# ">
+            <span class="text "><%= article.try(:title) %></span>
+            <span class="muted ">
+                                              <i class="glyphicon glyphicon-time "></i>
+                                              <%= format_time_yymmdd(article.created_at) %>
+                                          </span>
+            <span class="muted ">
+                                              <i class="glyphicon glyphicon-eye-open "></i> <%= article.try(:viewed_counter) %></span>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

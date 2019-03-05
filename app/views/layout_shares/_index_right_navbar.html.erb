@@ -1,0 +1,37 @@
+<div class="sidebar">
+  <div class="widget widget_hot">
+    <h3>最新文章</h3>
+    <ul>
+      <% unless @new_articles.blank? %>
+        <% @new_articles.each do |art| %>
+          <li>
+            <a href="/article_detail/<%= art.id %>">
+              <span class="text"><%= art.title %></span>
+              <span class="muted">
+                        <i class="glyphicon glyphicon-time"></i>
+                <%= art.created_at.strftime("%Y-%m-%d") %>
+                    </span>
+              <span class="muted">
+                        <i class="glyphicon glyphicon-eye-open"></i>  <%= art.try(:view_records_count) %>
+                    </span>
+            </a>
+          </li>
+        <% end %>
+      <% else %>
+      <% end %>
+
+    </ul>
+  </div>
+  <div class="widget widget_sentence">
+    <h3>标签云</h3>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li>
+          <%= link_to root_path(tag_id:tag.id) do %>
+            <%= tag.try(:name) %> <span class="badge"><%= tag.articles.is_show_home.size %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

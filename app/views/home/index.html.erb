@@ -6,9 +6,10 @@
     <div class="title">
       <h3>最新发布</h3>
       <div class="more">
-        <%#= link_to "全部", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time]) %>
-        <%#= link_to "技术分享", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time],type:"technical") %>
-        <%#= link_to "生活杂谈", root_path(category_id:params[:category_id],tag_id:params[:tag_id],create_time:params[:create_time],type:"life") %>
+        <%= link_to "全部", root_path %>
+        <% @categories.each do |category| %>
+          <%= link_to category.try(:name), root_path(category_id:category.id,tag_id:params[:tag_id],create_time:params[:create_time]) %>
+        <% end %>
       </div>
     </div>
     <% if @articles.blank?  %>
@@ -43,9 +44,9 @@
 
 
 
-<%#= paginate @articles, theme: 'home' %>
+<%= paginate @articles, theme: 'home' %>
   </div>
 </div><!--/.col-xs-12.col-sm-9-->
 <div class="col-xs-12 col-sm-4">
-  <%= render("layout_shares/right_navbar") %>
+  <%= render("layout_shares/index_right_navbar") %>
 </div><!--/.sidebar-offcanvas-->
