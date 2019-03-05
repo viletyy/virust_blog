@@ -12,7 +12,7 @@
                 <%= art.created_at.strftime("%Y-%m-%d") %>
                     </span>
               <span class="muted">
-                        <i class="glyphicon glyphicon-eye-open"></i>  <%= art.try(:view_records_count) %>
+                        <i class="glyphicon glyphicon-eye-open"></i>  <%= art.try(:viewed_counter) %>
                     </span>
             </a>
           </li>
