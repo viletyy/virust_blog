@@ -34,5 +34,6 @@ class Article < ApplicationRecord
   scope :order_with_asc, -> (col){order("#{col} asc")}
   scope :order_with_desc, -> (col){order("#{col} desc")}
   scope :search, -> (keyword){where("title like ?", "%#{keyword}%")}
+  scope :is_show_home, ->(){where(status:1)}
 
 end

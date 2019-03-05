@@ -5,7 +5,12 @@ Rails.application.routes.draw do
       registrations: 'users/registrations',
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root "admin/templates#index"
+  root "home#index"
+  # 前台展示
+  get 'article_detail/:id', to: 'home#article_detail'
+
+
+  # 后台管理
   namespace :admin do
     root "home#index"
     resources :templates, only: [:index] do

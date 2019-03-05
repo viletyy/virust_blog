@@ -13,4 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require jquery.min.js
+//= require bootstrap.min.js
+//= require marked.min.js
+//= require prettify.min.js
+//= require raphael.min.js
+//= require underscore.min.js
+//= require sequence-diagram.min.js
+//= require flowchart.min.js
+//= require jquery.flowchart.min.js
+//= require editormd.js

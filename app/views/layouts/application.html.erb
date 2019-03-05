@@ -7,9 +7,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
-    <%= yield %>
+
+  <%= render("layout_shares/header") %>
+  <div class="container">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <%= yield %>
+
+    </div><!--/row-->
+
+    <hr>
+
+    <%= render("layout_shares/footer") %>
+  </div><!--/.container-->
+
+    <%= content_for?(:extro_scripts) ? yield(:extro_scripts) : ''%>
   </body>
 </html>
