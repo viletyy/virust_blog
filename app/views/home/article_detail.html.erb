@@ -27,9 +27,18 @@
           <% end %>
         </span>
         <span class="item time "><i class="glyphicon glyphicon-time"></i> <%= @article.created_at.strftime("%Y-%m-%d") %></span>
-        <span class="item likes"><i class="glyphicon glyphicon-heart-empty"></i> <%= @article.try(:liked_counter) %></span>
-        <span class="item views"><i class="glyphicon glyphicon-eye-open"></i> <%= @article.try(:viewed_counter) %></span>
-        <span class="item comment"><i class="glyphicon glyphicon-comment"></i> <%= @article.try(:comments_counter) %></span>
+        <span class="item likes">
+          <% if @like_record.present? %>
+            <i class="glyphicon glyphicon-heart"></i>
+          <% else %>
+            <%= link_to like_article_home_path(@article), class: "normal_font" do %>
+              <i class="glyphicon glyphicon-heart-empty"></i>
+            <% end %>
+          <% end %>
+          <%= @article.try(:liked_counter) %>
+        </span>
+        <span class="item views"><a class="normal_font" href="javascript:"><i class="glyphicon glyphicon-eye-open"></i></a> <%= @article.try(:viewed_counter) %></span>
+        <span class="item comment"><a class="normal_font" href="javascript:"><i class="glyphicon glyphicon-comment"></i></a> <%= @article.try(:comments_counter) %></span>
       </div>
     </header>
 

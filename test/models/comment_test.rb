@@ -7,7 +7,7 @@
 #  user_id      :integer
 #  content      :string(255)
 #  subject_type :string(255)
-#  subject_id   :string(255)
+#  subject_id   :integer
 #  status       :integer          default(0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

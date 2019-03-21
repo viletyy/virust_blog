@@ -53,3 +53,8 @@
 `$ sh shell_script/start.production.puma.sh`
 
 `$ sh shell_script/restart.production.puma.sh (重启项目)`
+
+
+#### Docker
+
+` docker run -it --rm  -v $(pwd)/virus_blog:/home/app/virus_blog -p 3666:3666 ubuntu:18.04 sh`

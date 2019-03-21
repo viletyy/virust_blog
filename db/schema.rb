@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "user_id"
     t.string "content"
     t.string "subject_type"
-    t.string "subject_id"
+    t.integer "subject_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "user_id"
     t.string "ip_address"
     t.string "subject_type"
-    t.string "subject_id"
+    t.integer "subject_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "user_id"
     t.string "ip_address"
     t.string "subject_type"
-    t.string "subject_id"
+    t.integer "subject_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

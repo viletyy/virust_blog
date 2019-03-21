@@ -540,3 +540,7 @@ a:hover {
     color: #FFFFCC;
     cursor: default;
 }
+
+.normal_font {
+    color: #bbb !important;
+}
