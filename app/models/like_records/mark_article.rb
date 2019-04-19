@@ -18,6 +18,6 @@ class LikeRecords::MarkArticle < LikeRecord
   belongs_to :article, class_name: "Article", foreign_key: :subject_id, counter_cache: :liked_counter
   belongs_to :user, required: false
 
-  validates :user_id, uniqueness: {scope: :ip_address, message: "该用户或ip地址已经有浏览记录了"}
+  validates :user_id, uniqueness: {scope: [:ip_address, :subject_id, :subject_type], message: "该用户或ip地址已经有浏览记录了"}
 
 end
