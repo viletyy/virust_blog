@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_041658) do
+ActiveRecord::Schema.define(version: 2019_04_19_134218) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "user_id"
+    t.bigint "category_id"
+    t.bigint "user_id"
     t.string "title"
     t.string "desp"
     t.text "content", limit: 4294967295
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_articles_on_category_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -36,22 +38,50 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "content"
     t.string "subject_type"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_comments_on_subject_type_and_subject_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "like_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "ip_address"
     t.string "subject_type"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_like_records_on_subject_type_and_subject_id"
+    t.index ["user_id"], name: "index_like_records_on_user_id"
+  end
+
+  create_table "news", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.string "desp"
+    t.text "content", limit: 4294967295
+    t.bigint "category_id"
+    t.bigint "source_id"
+    t.integer "liked_counter", default: 0
+    t.integer "viewed_counter", default: 0
+    t.integer "comments_counter", default: 0
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_news_on_category_id"
+    t.index ["source_id"], name: "index_news_on_source_id"
+  end
+
+  create_table "sources", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "address_url"
+    t.integer "news_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,9 +89,10 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
   create_table "subject_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.string "subject_type"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_subject_tags_on_subject_type_and_subject_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -70,6 +101,15 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "source_id"
+    t.datetime "begin_time"
+    t.integer "hours", default: 24
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["source_id"], name: "index_tasks_on_source_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -90,13 +130,15 @@ ActiveRecord::Schema.define(version: 2018_12_21_041658) do
 
   create_table "view_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "ip_address"
     t.string "subject_type"
-    t.integer "subject_id"
+    t.bigint "subject_id"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_view_records_on_subject_type_and_subject_id"
+    t.index ["user_id"], name: "index_view_records_on_user_id"
   end
 
 end
