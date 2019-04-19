@@ -3,8 +3,8 @@
 # Table name: articles
 #
 #  id               :bigint(8)        not null, primary key
-#  category_id      :integer
-#  user_id          :integer
+#  category_id      :bigint(8)
+#  user_id          :bigint(8)
 #  title            :string(255)
 #  desp             :string(255)
 #  content          :text(4294967295)

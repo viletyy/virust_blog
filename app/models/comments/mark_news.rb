@@ -13,10 +13,7 @@
 #  updated_at   :datetime         not null
 #
 
-require 'test_helper'
-
-class CommentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Comments::MarkNews < Comment
+  belongs_to :news, class_name: "News", counter_cache: :comments_counter
+  has_many :comments_reply_news_comments, :class_name => 'Comments::ReplyNewsComment', as: :subject, foreign_key: :subject_id
 end

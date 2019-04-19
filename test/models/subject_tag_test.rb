@@ -5,7 +5,7 @@
 #  id           :bigint(8)        not null, primary key
 #  tag_id       :integer
 #  subject_type :string(255)
-#  subject_id   :integer
+#  subject_id   :bigint(8)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

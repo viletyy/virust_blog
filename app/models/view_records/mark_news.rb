@@ -1,11 +1,11 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: view_records
 #
 #  id           :bigint(8)        not null, primary key
 #  type         :string(255)
 #  user_id      :bigint(8)
-#  content      :string(255)
+#  ip_address   :string(255)
 #  subject_type :string(255)
 #  subject_id   :bigint(8)
 #  status       :integer          default(0)
@@ -13,10 +13,9 @@
 #  updated_at   :datetime         not null
 #
 
-require 'test_helper'
+class ViewRecords::MarkNews < ViewRecord
 
-class CommentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  belongs_to :news, class_name: "News", foreign_key: :subject_id, counter_cache: :viewed_counter
+  belongs_to :user, required: false
+
 end
