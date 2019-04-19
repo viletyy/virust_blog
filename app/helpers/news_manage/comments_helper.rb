@@ -1,0 +1,2 @@
+module NewsManage::CommentsHelper
+end

@@ -1,0 +1,2 @@
+module NewsManage::NewsHelper
+end

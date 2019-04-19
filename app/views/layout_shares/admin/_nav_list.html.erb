@@ -19,8 +19,8 @@
     <b class="arrow"></b>
 
     <ul class="submenu">
-      <li class="<%= is_active_action("admin/news", action_with_ine) %>">
-        <a href="profile.html">
+      <li class="<%= is_active_action("admin/news_manage/news", action_with_ine) %>">
+        <a href="/admin/news_manage/news">
           <i class="menu-icon fa fa-caret-right"></i>
           资讯列表
         </a>
@@ -28,10 +28,56 @@
         <b class="arrow"></b>
       </li>
 
-      <li class="<%= is_active_action("admin/tasks", action_with_ine) %>">
-        <a href="inbox.html">
+      <li class="<%= is_active_action("admin/news_manage/tasks", action_with_ine) %>">
+        <a href="/admin/news_manage/tasks">
           <i class="menu-icon fa fa-caret-right"></i>
           任务列表
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<%= is_active_action("admin/news_manage/categories", action_with_ine) %>">
+        <a href="/admin/news_manage/categories">
+          <i class="menu-icon fa fa-caret-right"></i>
+          分类列表
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+
+      <li class="<%= is_active_action("admin/news_manage/tags",action_with_ine) %>">
+        <a href="/admin/news_manage/tags">
+          <i class="menu-icon fa fa-caret-right"></i>
+          标签列表
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<%= is_active_action("admin/news_manage/comments", action_with_ine) %>">
+        <a href="/admin/news_manage/comments">
+          <i class="menu-icon fa fa-caret-right"></i>
+          评论列表
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<%= is_active_action("admin/news_manage/like_records", action_with_ine) %>">
+        <a href="/admin/news_manage/like_records">
+          <i class="menu-icon fa fa-caret-right"></i>
+          点赞记录
+        </a>
+
+        <b class="arrow"></b>
+      </li>
+
+      <li class="<%= is_active_action("admin/news_manage/view_records", action_with_ine) %>">
+        <a href="/admin/news_manage/view_records">
+          <i class="menu-icon fa fa-caret-right"></i>
+          访问记录
         </a>
 
         <b class="arrow"></b>

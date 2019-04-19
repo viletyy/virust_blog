@@ -1,0 +1,51 @@
+<%= render("admin/articles_manage/shares/header_breadcrumb") %>
+<div class="page-content">
+  <%= render("layout_shares/admin/setting_container") %>
+
+  <div class="page-header">
+    <h1>
+      文章管理
+      <i class="ace-icon fa fa-angle-double-right"></i>
+      分类列表
+      <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        编辑分类
+      </small>
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+      <%= form_for @category, url: admin_news_manage_category_path(@category), html:{class: "form-horizontal"} do |f| %>
+
+        <%= render partial: "admin/form_shares/f_text_field", locals: {f:f,field: "name", placeholder: "请输入分类名称",required:true} %>
+
+        <%= render partial: "admin/form_shares/f_on_or_off_switches", locals: {f:f,field:"status"} %>
+
+
+        <div class="clearfix form-actions">
+          <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="submit">
+              <i class="ace-icon fa fa-check bigger-110"></i>
+              提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset">
+              <i class="ace-icon fa fa-undo bigger-110"></i>
+              重置
+            </button>
+          </div>
+        </div>
+
+        <div class="hr hr-24"></div>
+      <% end %>
+
+
+
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<%= render("admin/form_shares/f_js") %>

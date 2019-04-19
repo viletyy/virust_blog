@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="space"></div>
+    <table id="simple-table" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th class="detail-col">用户</th>
+        <th>类型</th>
+        <th>所属文章/评论</th>
+        <th>
+          <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+          点赞时间
+        </th>
+        <th>是否展示</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% like_records.each do |record| %>
+        <tr>
+          <td class="center">
+            <%= record.id %>
+          </td>
+
+          <td class="center">
+            <div class="action-buttons">
+              <a href="#" class="green bigger-140 show-details-btn" title="Show Details">
+                <i class="ace-icon fa fa-angle-double-down"></i>
+                <span class="sr-only">Details</span>
+              </a>
+            </div>
+          </td>
+          <td><%= record.try(:type) %></td>
+          <td>
+            <a href="#"><%#= record.article.try(:title) %></a>
+          </td>
+          <td><%= format_time_yymmddhms(record.created_at) %></td>
+          <td><%= record.status == 1 ? "是" : "否" %></td>
+
+          <td>
+            <div class="hidden-sm hidden-xs btn-group">
+              <!--                    <button class="btn btn-xs btn-success">-->
+              <!--                      <i class="ace-icon fa fa-check bigger-120"></i>-->
+              <!--                    </button>-->
+
+              <%#= link_to edit_admin_articles_manage_article_path(article) do %>
+              <!--                      <button class="btn btn-xs btn-info">-->
+              <!--                        <i class="ace-icon fa fa-pencil bigger-120"></i>-->
+              <!--                      </button>-->
+              <%# end %>
+
+              <%#= link_to admin_articles_manage_article_path(article),method: :delete do %>
+              <button class="btn btn-xs btn-danger bootbox-confirm-delete" data-href="<%= admin_news_manage_like_record_path(record) %>">
+                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+              </button>
+              <%# end %>
+
+              <!--                    <button class="btn btn-xs btn-warning">-->
+              <!--                      <i class="ace-icon fa fa-flag bigger-120"></i>-->
+              <!--                    </button>-->
+            </div>
+          </td>
+        </tr>
+        <%= render partial: "admin/articles_manage/shares/detail_user", locals: {obj:record} %>
+
+      <% end %>
+      </tbody>
+    </table>
+  </div><!-- /.span -->
+</div><!-- /.row -->
+
+
+<%= render partial: "kaminari/page_style", locals: { begin_count: begin_count, current_page: like_records , theme: "admin" }%>
