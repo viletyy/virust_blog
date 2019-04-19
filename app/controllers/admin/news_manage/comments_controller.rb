@@ -1,11 +1,11 @@
-class Admin::ArticlesManage::CommentsController < Admin::BaseController
+class Admin::NewsManage::CommentsController < Admin::BaseController
   before_action :find_one, only: [:edit, :update, :destroy]
 
   def index
     if params[:keyword].present?
-      @comments = Comments::MarkArticle.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @comments = Comments::MarkNews.where("title like ?", "%#{params[:keyword]}%").order("created_at desc").page(params[:page]).per(LIST_PAGE)
     else
-      @comments = Comments::MarkArticle.order("created_at desc").page(params[:page]).per(LIST_PAGE)
+      @comments = Comments::MarkNews.order("created_at desc").page(params[:page]).per(LIST_PAGE)
     end
     @begin_count = (@comments.current_page - 1)*LIST_PAGE + 1
   end
@@ -15,9 +15,9 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
   end
 
   def create
-    @comment = Comments::MarkArticle.new(comment_params)
+    @comment = Comments::MarkNews.new(comment_params)
     if @comment.save
-      redirect_to admin_articles_manage_comments_path
+      redirect_to admin_news_manage_comments_path
       flash[:success] = "新增评论成功"
     else
       render :new
@@ -32,7 +32,7 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
   def update
     @comment.attributes = comment_params
     if @comment.save
-      redirect_to admin_articles_manage_comments_path
+      redirect_to admin_news_manage_comments_path
       flash[:success] = "更新评论成功"
     else
       render :edit
@@ -42,7 +42,7 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
 
   def destroy
     if @comment.update(status:-1)
-      redirect_to admin_articles_manage_comments_path
+      redirect_to admin_news_manage_comments_path
       flash[:success] = "删除评论成功"
     else
       flash[:error] = @comment.errors.full_messages.join(",")
@@ -52,10 +52,10 @@ class Admin::ArticlesManage::CommentsController < Admin::BaseController
   private
 
     def find_one
-      @comment = Comments::MarkArticle.find_by_id(params[:id])
+      @comment = Comments::MarkNews.find_by_id(params[:id])
     end
 
     def comment_params
-      params.require(:comment_mark_article).permit!
+      params.require(:comment_mark_news).permit!
     end
 end

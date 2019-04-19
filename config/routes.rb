@@ -27,6 +27,33 @@ Rails.application.routes.draw do
       end
     end
 
+    # 资讯管理
+    namespace :news_manage do
+      resources :news do
+
+      end
+
+      resources :tags do
+
+      end
+
+      resources :categories do
+
+      end
+
+      resources :comments do
+
+      end
+
+      resources :view_records do
+
+      end
+
+      resources :like_records do
+
+      end
+    end
+
     # 文章管理
     namespace :articles_manage do
       resources :articles do

@@ -1,0 +1,36 @@
+<%= render("admin/news_manage/shares/header_breadcrumb") %>
+
+<div class="page-content">
+    <%= render("layout_shares/admin/setting_container") %>
+  <!-- /.ace-settings-container -->
+
+  <div class="page-header">
+    <h1>
+      文章管理
+      <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        分类列表
+      </small>
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+      <%= render("layout_shares/admin/alert") %>
+
+      <a href="<%= new_admin_news_manage_category_path %>" class="btn btn-app btn-primary btn-xs radius-4">
+        <i class="ace-icon fa fa-plus bigger-170"></i>
+        创建分类
+      </a>
+      <div class="space"></div>
+
+      <%= render partial: "table", locals: { categories: @categories , begin_count:@begin_count } %>
+
+
+      <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<%= render("admin/shares/table_js") %>

@@ -54,29 +54,29 @@ class Admin::ArticlesManage::ArticlesController < Admin::BaseController
   end
 
   private
-  def find_one
-    @article = Article.find_by_id(params[:id])
-  end
-
-  def find_categories
-    @categories = Categories::MarkArticle.limit(50)
-  end
-
-  def bind_tags
-    if !article_params[:tags].blank?
-      tag_ids = []
-      article_params[:tags].split(",").each do |tn|
-        tag = Tags::MarkArticle.find_or_create_by(name:tn)
-        tag_ids << tag
-      end
-      tags = Tags::MarkArticle.where(id:tag_ids)
-    else
-      tags = Tags::MarkArticle.where(id:"")
+    def find_one
+      @article = Article.find_by_id(params[:id])
     end
-    tags
-  end
 
-  def article_params
-    params.require(:article).permit!
-  end
+    def find_categories
+      @categories = Categories::MarkArticle.limit(50)
+    end
+
+    def bind_tags
+      if !article_params[:tags].blank?
+        tag_ids = []
+        article_params[:tags].split(",").each do |tn|
+          tag = Tags::MarkArticle.find_or_create_by(name:tn)
+          tag_ids << tag
+        end
+        tags = Tags::MarkArticle.where(id:tag_ids)
+      else
+        tags = Tags::MarkArticle.where(id:"")
+      end
+      tags
+    end
+
+    def article_params
+      params.require(:article).permit!
+    end
 end

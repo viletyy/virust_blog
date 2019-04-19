@@ -11,4 +11,7 @@
 #
 
 class Task < ApplicationRecord
+
+  # ORM关系
+  belongs_to :source
 end

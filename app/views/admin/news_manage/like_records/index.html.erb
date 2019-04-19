@@ -1,0 +1,30 @@
+<%= render("admin/news_manage/shares/header_breadcrumb") %>
+
+<div class="page-content">
+    <%= render("layout_shares/admin/setting_container") %>
+  <!-- /.ace-settings-container -->
+
+  <div class="page-header">
+    <h1>
+      文章管理
+      <small>
+        <i class="ace-icon fa fa-angle-double-right"></i>
+        点赞记录列表
+      </small>
+    </h1>
+  </div><!-- /.page-header -->
+
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- PAGE CONTENT BEGINS -->
+      <%= render("layout_shares/admin/alert") %>
+
+      <%= render partial: "table", locals: { like_records: @like_records, begin_count: @begin_count } %>
+
+
+      <!-- PAGE CONTENT ENDS -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<%= render("admin/shares/table_js") %>

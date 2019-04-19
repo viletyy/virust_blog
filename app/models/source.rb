@@ -11,4 +11,9 @@
 #
 
 class Source < ApplicationRecord
+
+  # ORM关系
+  has_many :news
+  has_many :tasks
+
 end
