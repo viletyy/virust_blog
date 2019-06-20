@@ -53,7 +53,7 @@ group :development do
   gem "capistrano", "~> 3.11", require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rbenv', require: false
   gem 'capistrano3-puma', require: false
   gem 'capistrano-rails-console', require: false
 end
@@ -84,12 +84,7 @@ gem 'devise'
 # 文件上传工具
 gem 'carrierwave'
 
-# HTTP访问控制，允许跨域访问
-gem 'rack-cors', :require => 'rack/cors'
-
 # 权限控制
 gem 'pundit'
 
-# # 权限管理
-gem 'doorkeeper'
 

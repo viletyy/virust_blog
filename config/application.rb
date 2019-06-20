@@ -21,17 +21,7 @@ module VirusBlog
     config.i18n.fallbacks = [I18n.default_locale]
 
     config.active_record.default_timezone = :local
-    # 自动加载lib中文件s
+    # 自动加载lib中文件
     config.autoload_paths += %W(#{config.root}/lib)
-    # 跨域访问
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*',
-                 :headers => :any,
-                 :methods => :any,
-                 :expose => ['access-token', 'expiry', 'token-type', 'uid', 'client']
-      end
-    end
   end
 end

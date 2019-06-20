@@ -3,7 +3,8 @@ lock "~> 3.11.0"
 
 set :application, "virus_blog"
 set :repo_url, "git@github.com:fightpractice/virus_blog.git"
-
+set :default_shell, '/bin/bash -l'
+set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -21,10 +22,10 @@ set :repo_url, "git@github.com:fightpractice/virus_blog.git"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml"
+#
+set :linked_dirs,  fetch(:linked_dirs,  []).push('log', "tmp/pids", "tmp/cache", "tmp/sockets")
+set :linked_files, fetch(:linked_files, []).push('config/master.key', 'puma.rb', 'config/database.yml')
 
-# Default value for linked_dirs is []
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -37,3 +38,21 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
+
+set :puma_user, fetch(:user)
+set :puma_rackup, -> { File.join(current_path, 'config.ru') }
+set :puma_control_app, false
+set :puma_role, :app
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
+set :puma_threads, [0, 16]
+set :puma_workers, 2
+set :puma_worker_timeout, nil
+set :puma_init_active_record, false
+set :puma_preload_app, false
+set :puma_daemonize, false
+set :puma_plugins, []  #accept array of plugins
+set :puma_tag, fetch(:application)
+set :puma_restart_command, 'bundle exec puma'
+# before 'deploy', 'rvm:install_rvm'  # install/update RVM
+after 'deploy:published', 'bundler:clean'

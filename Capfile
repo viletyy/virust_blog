@@ -25,11 +25,11 @@ install_plugin Capistrano::SCM::Git
 #   https://github.com/capistrano/rails
 #   https://github.com/capistrano/passenger
 #
-require "capistrano/rvm"
-# require "capistrano/rbenv"
+# require "capistrano/rvm"
+require "capistrano/rbenv"
 # require "capistrano/chruby"
 require "capistrano/bundler"
-require "capistrano/rails/assets"
+# require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 require "capistrano/rails/console"
 
@@ -37,7 +37,7 @@ require "capistrano/rails/console"
 require "capistrano/puma"
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Workers
-install_plugin Capistrano::Puma::Nginx
+# install_plugin Capistrano::Puma::Nginx
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
