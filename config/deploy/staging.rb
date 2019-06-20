@@ -5,7 +5,7 @@ server_ip = "118.31.225.51"
 user_name = "deploy"
 branch = "dev"
 deploy_rails_env = "development"  #  development /production
-deploy_mode = "staging" # staging / production
+deploy_mode = "development" # staging / production
 set :stage, :development #  development /production
 
 # --手动填写-end----
