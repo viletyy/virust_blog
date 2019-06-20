@@ -14,10 +14,6 @@ server "#{server_ip}", user: "#{user_name}", roles: %w{app db web}, my_property:
 # server "db.example.com", user: "deploy", roles: %w{db}
 set :deploy_to, "#{self_app_path}"
 set :branch, "#{branch}"
-set :unicorn_config_path, "#{self_app_path}/current/config/unicorn/#{deploy_mode}.rb"
-set :unicorn_bundle_gemfile, "#{self_app_path}/current/Gemfile"
-set :unicorn_rack_env, "#{deploy_rails_env}"
-set :unicorn_pid, "#{self_app_path}/current/tmp/pids/unicorn.pid" #和unicorn/staging.rb pid对应
 set :rails_env,   "#{deploy_rails_env}"
 set :RAILS_ENV,   "#{deploy_rails_env}"
 
