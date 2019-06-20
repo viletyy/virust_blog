@@ -1,7 +1,7 @@
 source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.2'
+ruby '2.6.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # 自动化部署
+  gem "capistrano", "~> 3.11", require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano3-puma', require: false
 end
 
 group :development do
@@ -61,7 +67,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 # 分页
 gem 'kaminari'
 
@@ -77,8 +82,12 @@ gem 'devise'
 # 文件上传工具
 gem 'carrierwave'
 
-# 自动化部署工具
-# gem 'mina', '~> 1.2', '>= 1.2.3'
+# HTTP访问控制，允许跨域访问
+gem 'rack-cors', :require => 'rack/cors'
 
 # 权限控制
 gem 'pundit'
+
+# # 权限管理
+gem 'doorkeeper'
+
