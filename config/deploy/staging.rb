@@ -6,7 +6,7 @@ user_name = "deploy"
 branch = "dev"
 deploy_rails_env = "development"  #  development /production
 deploy_mode = "staging" # staging / production
-# set :stage, :development #  development /production
+set :stage, :development #  development /production
 
 # --手动填写-end----
 server "#{server_ip}", user: "#{user_name}", roles: %w{app db web}, my_property: :true
@@ -16,12 +16,4 @@ set :deploy_to, "#{self_app_path}"
 set :branch, "#{branch}"
 set :rails_env,   "#{deploy_rails_env}"
 set :RAILS_ENV,   "#{deploy_rails_env}"
-
-server "#{server_ip}",
-       user: "#{user_name}",
-       roles: %w{web app},
-       ssh_options: {
-           user: "#{user_name}", # overrides user setting above
-           # keys: %w(/home/user_name/.ssh/id_rsa),
-           forward_agent: false
-       }
+set :assets_roles, []
