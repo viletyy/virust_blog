@@ -15,7 +15,7 @@
 
 `$ bundle`
 
-`$ cp config/application.yml.example config/application.yml`
+`$ cp config/database.yml.example config/database.yml`
 
 `$ vim application.yml (填写配置信息)`
 
