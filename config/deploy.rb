@@ -4,6 +4,7 @@ lock "~> 3.11.0"
 set :application, "virus_blog"
 set :repo_url, "git@github.com:fightpractice/virus_blog.git"
 set :default_shell, '/bin/bash -l'
+set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
