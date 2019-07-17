@@ -34,7 +34,9 @@
           </td>
           <td><%= record.try(:type) %></td>
           <td>
-            <a href="#"><%#= record.article.try(:title) %></a>
+            <% if record.article.present? %>
+              <a href="<%= edit_admin_articles_manage_article_path(record.article) %>"><%= record.article.try(:title) %></a>
+            <% end %>
           </td>
           <td><%= format_time_yymmddhms(record.created_at) %></td>
           <td><%= record.status == 1 ? "是" : "否" %></td>
