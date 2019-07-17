@@ -12,7 +12,11 @@ class HomeController < ApplicationController
     end
 
     if params[:tag_id].present?
-      @articles = @articles.joins(:tags).where("tags.id = ?","#{params[:tag_id]}").distinct
+      @articles = @articles.joins(:tags).where(tags: {id: params[:tag_id]}).distinct
+    end
+
+    if params[:keyword].present?
+      @articles = @articles.where("articles.title like ? articles.desp like ?", "#{params[:keyword]}", "#{params[:keyword]}")
     end
 
     @categories = Categories::MarkArticle.includes(:articles).is_show_home.limit(5)
