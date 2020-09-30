@@ -8,8 +8,7 @@ class Admin::BaseController < ApplicationController
 
   private
   def check_user_role
-    status = @current_user.have_admin_role?
-    if status == true
+    if current_user.admin_role == true
     else
       sign_out
       flash[:error] = "禁止登入"

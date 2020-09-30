@@ -41,8 +41,7 @@ class User < ApplicationRecord
     end
   end
 
-  # TODO 前台用户权限管理预留
   def have_admin_role?
-    return true
+    admin_role
   end
 end
